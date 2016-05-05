@@ -27,16 +27,12 @@ def getin():
         time.sleep(5)
         getin()
 
-header = '''                  ______ _______ _____  
-                 |  ____|__   __|  __ \ 
-  _ __ ___  _   _| |__     | |  | |__) |
- | '_ ` _ \| | | |  __|    | |  |  ___/ 
- | | | | | | |_| | |       | |  | |     
- |_| |_| |_|\__, |_|       |_|  |_|     
-             __/ |                      
-            |___/                       
-                                -Sayan Bhowmik
-            '''
+header = '''
+   _    _    _    _    _  
+  / \  / \  / \  / \  / \ 
+ ( m )( y )( F )( T )( P )
+  \_/  \_/  \_/  \_/  \_/ 
+  '''
 print header
 print "\n\n [*] For help, use '?' command after LOGGING IN\n\n"
 url = putURL()
@@ -52,7 +48,7 @@ def ls():
     for i in dir_list:
         i.replace('/', '')
         if('.' in i):
-            print ("\t" + i[0:])
+            print ("\t- " + i[0:])
 
         else:
             print ("[+] " + i[0:])
@@ -65,7 +61,8 @@ def cd(dir):
         ftp.cwd(dir)
 
     except:
-        print "[-] Error Occured. Please check Directory Lisiting again \n\t [*]HELP: ls()\n\n"
+        print ("[-] Error Occured. Please check Directory Lisiting again" +
+               "\n\t" + "[*]HELP: ls()\n\n")
 
 
 def bye():
@@ -82,7 +79,10 @@ def setTransferMode(MODE):
 
 
 def download(item):
-    ftp.retrbinary('RETR ' + item, open(item, 'wb').write)
+    try:
+        ftp.retrbinary('RETR ' + item, open(item, 'wb').write)
+    except:
+        print "[!] File Name Error"
 
 
 def upload(item):
@@ -154,10 +154,11 @@ while(cmd != "bye"):
     elif (chk[0] == "set" and chk[1] == "MODE" and chk[2] == "binary"):
         setTransferMode("binary")
         print "Transfer MODE set to Binary"
+        cmd = raw_input(caret)
 
     elif (chk[0] == "set" and chk[1] == "MODE" and chk[2] == "ascii"):
         setTransferMode("ascii")
-        print "Transfer MODE set to Binary"
+        print "Transfer MODE set to Ascii"
         cmd = raw_input(caret)
     else:
         print "Unrecognized command given"
