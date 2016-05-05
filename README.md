@@ -2,7 +2,7 @@
 
 This is a implementation of FTP (File Transfer Protocol)
 
-<pre>
+<code>
 	Here are all the available commands:
     
     [*] ? - see all available commands
@@ -20,4 +20,4 @@ This is a implementation of FTP (File Transfer Protocol)
     [*] set MODE <binry/ascii> - set transfer mode <binary/ascii>
 
     [*] bye - quits the current ftp connect and closes appliation
-</pre>
+</code>
